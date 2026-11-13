@@ -1,0 +1,376 @@
+.wizard-container {
+  min-height: 100vh;
+  background: #f4f7fb;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.progress-bar {
+  max-width: 1000px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 8%;
+  right: 8%;
+  height: 3px;
+  background: #dbe3ef;
+  z-index: 0;
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.step span {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #64748b;
+}
+
+.step.active {
+  color: #2563eb;
+}
+
+.step.active span {
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.template-selection,
+.wizard-step {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+}
+
+.wizard-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wizard-heading h2,
+.wizard-step h2 {
+  margin: 0 0 10px;
+  color: #172033;
+  font-size: 28px;
+}
+
+.wizard-heading p,
+.wizard-step p {
+  color: #64748b;
+  font-size: 15px;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 25px;
+}
+
+.template-card {
+  position: relative;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.template-card:hover {
+  transform: translateY(-4px);
+  border-color: #93c5fd;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.12);
+}
+
+.template-card.selected {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.template-placeholder {
+  height: 150px;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+}
+
+.template-preview-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.template-card-content {
+  padding: 18px;
+}
+
+.template-card-content h3 {
+  margin: 0 0 8px;
+  color: #172033;
+}
+
+.template-card-content p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.selected-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #2563eb;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.wizard-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.wizard-actions button,
+.next-button {
+  border: none;
+  border-radius: 9px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+}
+
+.wizard-actions button:hover,
+.next-button:hover {
+  background: #1d4ed8;
+}
+
+.wizard-actions button:disabled,
+.next-button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  padding: 50px;
+  color: #64748b;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px;
+  background: #f8fafc;
+  border-radius: 12px;
+  color: #64748b;
+}
+/* ==============================
+   STEP 4 - CAMPAIGN PREVIEW
+================================ */
+
+.preview-step {
+  padding: 36px;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.preview-header h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: #172554;
+}
+
+.preview-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.preview-status {
+  background: #dcfce7;
+  color: #166534;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.preview-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.preview-section h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  color: #1e293b;
+}
+
+.template-preview-card {
+  border: 1px solid #dbeafe;
+  background: #f8fbff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.template-preview-info h4 {
+  font-size: 20px;
+  margin: 0 0 8px;
+  color: #1d4ed8;
+}
+
+.template-preview-info p {
+  color: #64748b;
+}
+
+.preview-detail {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.preview-detail strong {
+  color: #334155;
+}
+
+.preview-detail span {
+  color: #64748b;
+}
+
+.email-body-preview {
+  margin-top: 20px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.email-body-preview h5 {
+  margin-top: 0;
+  color: #475569;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.summary-number {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2563eb;
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.summary-card p {
+  margin: 5px 0 0;
+  color: #64748b;
+}
+
+.schedule-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.schedule-summary div {
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+.schedule-summary strong {
+  display: block;
+  color: #475569;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.schedule-summary span {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.empty-preview {
+  padding: 18px;
+  background: #fff7ed;
+  border-radius: 10px;
+  color: #9a3412;
+}
+
+.launch-button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 13px 24px;
+  border-radius: 9px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.launch-button:hover {
+  background: #1d4ed8;
+}
+
+.launch-button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}

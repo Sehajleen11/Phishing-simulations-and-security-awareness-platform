@@ -1,0 +1,688 @@
+/* =========================================
+   PHISHGUARD PAGE BUILDER
+   Modern Cybersecurity SaaS UI
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.page-builder {
+  min-height: 100vh;
+  display: flex;
+  background: #f4f6fb;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: #172554;
+}
+
+/* =========================================
+   SIDEBAR
+   ========================================= */
+
+.builder-sidebar {
+  width: 270px;
+  min-height: 100vh;
+  padding: 28px 18px;
+  background: linear-gradient(180deg, #0b1638 0%, #101d46 100%);
+  color: white;
+  box-shadow: 6px 0 25px rgba(15, 23, 42, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.builder-sidebar::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.08);
+  bottom: -70px;
+  left: -70px;
+}
+
+/* Sidebar heading */
+
+.sidebar-title {
+  padding: 4px 8px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.sidebar-title h2 {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.sidebar-title h2::before {
+  content: "🛡️ ";
+}
+
+.sidebar-title p {
+  margin: 7px 0 0;
+  color: #9caed1;
+  font-size: 12px;
+}
+
+/* Sections */
+
+.sidebar-section {
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar-section h3 {
+  margin: 0 8px 13px;
+  color: #aebcda;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   DRAG ITEMS
+   ========================================= */
+
+.drag-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 13px;
+  border-radius: 10px;
+  margin-bottom: 9px;
+  cursor: grab;
+  font-size: 13px;
+  color: #e8edfa;
+  transition: all 0.2s ease;
+}
+
+.drag-item:hover {
+  background: rgba(99, 102, 241, 0.22);
+  border-color: rgba(129, 140, 248, 0.4);
+  transform: translateX(4px);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+}
+
+.drag-item:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+}
+
+/* =========================================
+   TEMPLATE BUTTONS
+   ========================================= */
+
+.template-button {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 9px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.055);
+  color: #e8edfa;
+  cursor: pointer;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.template-button:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(129, 140, 248, 0.4);
+}
+
+.template-button.active {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 7px 18px rgba(79, 70, 229, 0.3);
+}
+
+/* =========================================
+   MAIN AREA
+   ========================================= */
+
+.builder-main {
+  flex: 1;
+  padding: 28px 32px;
+  min-width: 0;
+}
+
+/* Header */
+
+.builder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.builder-header h1 {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  color: #172554;
+}
+
+.builder-header p {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* Preview button */
+
+.preview-mode-button {
+  border: none;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  padding: 11px 19px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 7px 18px rgba(79, 70, 229, 0.2);
+  transition: all 0.2s ease;
+}
+
+.preview-mode-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.3);
+}
+
+/* =========================================
+   WORKSPACE
+   ========================================= */
+
+.builder-workspace {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+}
+
+/* =========================================
+   CANVAS
+   ========================================= */
+
+.page-canvas {
+  flex: 1;
+  min-height: 670px;
+  border-radius: 18px;
+  padding: 55px 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dfe5f2;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 10px 35px rgba(30, 41, 59, 0.06),
+    inset 0 0 80px rgba(99, 102, 241, 0.025);
+  transition: background 0.3s ease;
+}
+
+/* Decorative background */
+
+.page-canvas::before {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.045);
+  top: -150px;
+  right: -100px;
+}
+
+.page-canvas::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: rgba(14, 165, 233, 0.035);
+  bottom: -120px;
+  left: -80px;
+}
+
+/* Training badge */
+
+.training-badge {
+  position: absolute;
+  top: 17px;
+  left: 18px;
+  background: #fff1f2;
+  color: #be123c;
+  border: 1px solid #fecdd3;
+  padding: 7px 11px;
+  border-radius: 7px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  z-index: 3;
+}
+
+/* =========================================
+   LOGIN CARD
+   ========================================= */
+
+.login-card {
+  width: 400px;
+  min-height: 430px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 16px;
+  padding: 38px 40px;
+  box-shadow:
+    0 25px 60px rgba(15, 23, 42, 0.13),
+    0 4px 15px rgba(15, 23, 42, 0.05);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+
+.mock-logo {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  font-size: 27px;
+  box-shadow: 0 9px 22px rgba(79, 70, 229, 0.25);
+}
+
+.login-card h2 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 750;
+  color: #172554;
+}
+
+.simulation-text {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 8px 0 23px;
+}
+
+/* =========================================
+   EMPTY CANVAS
+   ========================================= */
+
+.empty-canvas {
+  border: 2px dashed #d7ddea;
+  padding: 34px 20px;
+  border-radius: 12px;
+  color: #64748b;
+  background: #fafbfe;
+  transition: all 0.2s ease;
+}
+
+.empty-canvas:hover {
+  border-color: #a5b4fc;
+  background: #f7f7ff;
+}
+
+.empty-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #eef2ff;
+  color: #6366f1;
+  font-size: 25px;
+}
+
+.empty-canvas h3 {
+  margin: 0 0 6px;
+  color: #334155;
+  font-size: 14px;
+}
+
+.empty-canvas p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   CANVAS ELEMENTS
+   ========================================= */
+
+.canvas-element {
+  position: relative;
+  margin: 13px 0;
+  animation: elementAppear 0.2s ease;
+}
+
+@keyframes elementAppear {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.preview-input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d7dce8;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background: white;
+  color: #475569;
+  font-size: 13px;
+  outline: none;
+}
+
+.preview-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Button */
+
+.preview-button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  font-size: 13px;
+  font-weight: 650;
+  box-shadow: 0 7px 17px rgba(79, 70, 229, 0.2);
+}
+
+/* Checkbox */
+
+.checkbox-element {
+  display: block;
+  text-align: left;
+  font-size: 12px;
+  color: #475569;
+  padding: 3px 0;
+}
+
+.checkbox-element input {
+  margin-right: 8px;
+  accent-color: #6366f1;
+}
+
+/* Forgot password */
+
+.forgot-link {
+  color: #4f46e5;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Social button */
+
+.social-button {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d7dce8;
+  border-radius: 8px;
+  background: white;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+/* =========================================
+   REMOVE ELEMENT BUTTON
+   ========================================= */
+
+.remove-element {
+  position: absolute;
+  right: -10px;
+  top: -9px;
+  width: 23px;
+  height: 23px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: #ef4444;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 16px;
+  box-shadow: 0 3px 8px rgba(239, 68, 68, 0.25);
+  transition: all 0.15s ease;
+}
+
+.remove-element:hover {
+  transform: scale(1.12);
+  background: #dc2626;
+}
+
+/* =========================================
+   APPEARANCE PANEL
+   ========================================= */
+
+.style-panel {
+  width: 235px;
+  background: white;
+  padding: 22px;
+  border-radius: 15px;
+  height: fit-content;
+  border: 1px solid #e3e7f0;
+  box-shadow: 0 8px 25px rgba(30, 41, 59, 0.05);
+}
+
+.style-panel h3 {
+  margin: 0 0 20px;
+  color: #172554;
+  font-size: 16px;
+  font-weight: 750;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eef0f5;
+}
+
+.style-panel label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 7px;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.style-panel input[type="color"] {
+  width: 100%;
+  height: 43px;
+  padding: 3px;
+  border: 1px solid #e1e5ee;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+/* Element counter */
+
+.style-info {
+  margin-top: 23px;
+  padding: 13px;
+  background: #f7f8fc;
+  border: 1px solid #e8ebf2;
+  border-radius: 9px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.style-info strong {
+  color: #334155;
+}
+
+/* Clear */
+
+.clear-button {
+  width: 100%;
+  margin-top: 13px;
+  padding: 10px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fff7f7;
+  color: #dc2626;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.clear-button:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 1100px) {
+  .builder-sidebar {
+    width: 230px;
+  }
+
+  .builder-main {
+    padding: 22px;
+  }
+
+  .style-panel {
+    width: 200px;
+  }
+
+  .login-card {
+    width: 350px;
+  }
+}
+
+@media (max-width: 850px) {
+  .builder-workspace {
+    flex-direction: column;
+  }
+
+  .page-canvas {
+    width: 100%;
+  }
+
+  .style-panel {
+    width: 100%;
+  }
+}
+/* =========================================
+   TEMPLATE PRESETS
+   ========================================= */
+
+/* Corporate Blue */
+.template-microsoft {
+  background: linear-gradient(135deg, #eef3ff, #dbeafe) !important;
+}
+
+.card-microsoft {
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
+}
+
+.card-microsoft .mock-logo {
+  border-radius: 8px;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+}
+
+.card-microsoft .preview-button {
+  border-radius: 6px;
+  background: #2563eb;
+}
+
+/* Minimal Clean */
+.template-google {
+  background: linear-gradient(135deg, #f8fafc, #ffffff) !important;
+}
+
+.card-google {
+  border-radius: 18px;
+  box-shadow:
+    0 15px 40px rgba(15, 23, 42, 0.08);
+}
+
+.card-google .mock-logo {
+  border-radius: 50%;
+  background: #f1f5f9;
+  box-shadow: none;
+}
+
+.card-google .preview-button {
+  border-radius: 20px;
+  background: #334155;
+}
+
+/* Dark Premium */
+.template-apple {
+  background: linear-gradient(135deg, #d1d5db, #f3f4f6) !important;
+}
+
+.card-apple {
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+.card-apple h2 {
+  color: #f9fafb;
+}
+
+.card-apple .simulation-text {
+  color: #9ca3af;
+}
+
+.card-apple .mock-logo {
+  border-radius: 50%;
+  background: #374151;
+  box-shadow: none;
+}
+
+.card-apple .preview-input {
+  background: #1f2937;
+  border-color: #4b5563;
+  color: #e5e7eb;
+}
+
+.card-apple .checkbox-element {
+  color: #d1d5db;
+}
+
+.card-apple .forgot-link {
+  color: #93c5fd;
+}
+
+.card-apple .social-button {
+  background: #1f2937;
+  border-color: #4b5563;
+  color: #f3f4f6;
+}
+
+.card-apple .preview-button {
+  background: #f9fafb;
+  color: #111827;
+  border-radius: 20px;
+}
